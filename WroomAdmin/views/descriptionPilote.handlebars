@@ -1,0 +1,20 @@
+{{>lettrePartial}}
+
+		<a href="/descriptionPilote/{{pilote.PILNUM}}"> <img class="img" src="/image/pilote/{{pilote.PHOADRESSE}}"></a>
+			<p> Nom : {{pilote.PILNOM}} {{ pilote.PILPRENOM}} </p>
+    <p>Date de naissance : {{formatDate pilote.PILDATENAIS 'LL'}}</p>
+    <p>Nationalité : {{pilote.PAYNOM}}</p>
+    <p>Poids : {{pilote.PILPOIDS}} Kg</p>
+    <p>Taille : {{pilote.PILTAILLE}} Cm</p>
+
+		{{#if pilote.ECUNOM}}
+    <p><b>Ecurie :</b> {{pilote.ECUNOM}} </p>
+		{{else}}
+		<p><b>Ecurie : </b>Pas d'écurie cette année</p>
+		{{/if}}
+
+		{{>sponsorPartial}}
+
+    <p><b>Qui suis-je ? : </b>{{pilote.PILTEXTE}}</p>
+
+		{{>listePhotoPilPartial}}

@@ -1,0 +1,45 @@
+<div class="survol">
+  <div class="ecurie">
+    <div class="survol">
+      <div>
+    <img class="img" src="/image/ecurie/{{ecurie.ECUADRESSEIMAGE}}"><br>
+    </div>
+    <div class="description">
+
+      <b>Nom : </b> {{ecurie.ECUNOM}}<br>
+      <b>Directeur : </b> {{ecurie.ECUNOMDIR}}<br>
+      <b>Adresse :</b>{{ecurie.ECUADRSIEGE}}<br>
+      <b>Pays :</b>{{ecurie.PAYNOM}}<br>
+
+      {{#if fournisseurPneu.FPNOM}}
+      <p><b>Fournisseur de pneumatique :</b>{{fournisseurPneu.FPNOM}}</p>
+      {{/if}}
+    </div>
+  </div>
+      <div class="pilote">
+      {{#if listePilote}}
+      <p><b>Pilotes :</b></p>
+      {{#each listePilote}}
+        <a class="tooltip" href="/descriptionPilote/{{this.PILNUM}}">
+          {{this.PILPRENOM}} {{this.PILNOM}}
+          <span>
+            <div class="survol">
+              <div>
+              <img class="img"  src="/image/pilote/{{this.PHOADRESSE}}">
+            </div>
+            <div>
+              <b>{{this.PILNOM}} {{this.PILPRENOM}}</b><br>
+               {{this.PILTEXTE}}
+             </div>
+           </div>
+          </span>
+        </a>
+      <br>
+      {{/each}}
+      {{else}}
+      <p><b>Cette écurie ne participe pas au championnat cette année</b></p>
+      {{/if}}
+    </div>
+      {{>listePhotoVoitEcuriePartial}}
+    </div>
+{{>descriptionEcuriePartial}}

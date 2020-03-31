@@ -1,0 +1,51 @@
+<h1>Modifer un pilote</h1>
+
+  <form id="loginformA" action="modifierPilote" method="post">
+    <div>
+        <label for="login">Prénom: </label>
+        <input type="text" id="login" name="prenom" value="{{pilote.PILPRENOM}}"></input>
+    </div>
+    <div>
+        <label for="login">Nom: </label>
+        <input type="text" id="login" name="nom" value="{{pilote.PILNOM}}"></input>
+    </div>
+    <div>
+        <label for="login">Date de naissance: </label>
+        <input type="text" id="login" name="date" value={{dateAnnee}}></input>/<input type="text" id="login" name="date" value={{dateMois}}></input>/<input type="text" id="login" name="date" value={{dateJour}}></input>
+    </div>
+    <div>
+        <label for="login">Nationalité: </label>
+        <select id="nationalite-select" name="nationalite">
+          {{#each listeNationalite}}
+          <option value="{{this.PAYNUM}}"> {{this.PAYNAT}}</option>
+          {{/each}}
+        </select>
+    </div>
+    <div>
+        <label for="login">Ecurie: </label>
+        <select id="ecurie-select" name="ecurie">
+
+          {{#each listeEcurie}}
+          <option value="{{this.ECUNUM}}"> {{this.ECUNOM}}</option>
+          {{/each}}
+        </select>
+    </div>
+    <div>
+        <label for="login">Points: </label>
+        <input type="text" id="login" name="points" value="{{pilote.PILPOINTS}}"></input>
+    </div>
+    <div>
+        <label for="login">Poids: </label>
+        <input type="text" id="login" name="poids" value="{{pilote.PILPOIDS}}"></input>
+    </div>
+    <div>
+        <label for="login">Taille : </label>
+        <input type="text" id="login" name="taille"  value="{{pilote.PILTAILLE}}"></input>
+    </div>
+    <div>
+        <label for="login">Description: </label>
+        <input type="text" id="login" name="description"  value="{{pilote.PILTEXTE}}"></input>
+    </div>
+    <input id="prodId" name="num" type="hidden" value="{{pilote.PILNUM}}">
+  <input type="submit" value="AJOUTER"> </input>
+  </form>

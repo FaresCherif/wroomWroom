@@ -1,0 +1,270 @@
+let model = require('../models/pilote.js');
+let async=require('async');
+
+// ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
+
+module.exports.Repertoire = 	function(request, response){
+   response.title = 'Répertoire des pilotes';
+     model.getListePilote( function (err, result) {
+
+           if (err) {
+               // gestion de l'erreur
+               console.log(err);
+               return;
+           }
+
+           response.listePilote = result;
+
+           //console.log(result);
+      console.log(response.listePilote);
+      response.render('repertoirePilotes', response);
+      });
+  }
+
+
+
+  module.exports.AjouterPilote = 	function(request, response){
+    response.title = 'nomPilotes';
+
+    async.parallel (
+      [
+       function(callback){
+         model.getListeNationalite(function (err,result){ callback(null,result)});
+       },
+       function(callback){
+         model.getListeEcurie((function (err, result){callback(null,result)}));
+       },
+     ],
+
+     function(err,result){
+
+       if (err) {
+           // gestion de l'erreur
+           console.log(err);
+           return;
+       }
+      response.listeNationalite = result[0];
+      response.listeEcurie = result[1];
+      console.log(response.listeEcurie);
+
+      response.render('ajouterPilote', response);
+
+
+      }
+      );
+    };
+
+    module.exports.ModifierPilote = 	function(request, response){
+      response.title = 'nomPilotes';
+      let data = request.params.num;
+
+      async.parallel (
+        [
+         function(callback){
+           model.getListeNationalite(function (err,result){ callback(null,result)});
+         },
+         function(callback){
+           model.getListeEcurie((function (err, result){callback(null,result)}));
+         },
+         function(callback){
+           console.log(data);
+           model.getPilotesDescription(data,(function (err, result){callback(null,result)}));
+         },
+       ],
+
+       function(err,result){
+
+         if (err) {
+             // gestion de l'erreur
+             console.log(err);
+             return;
+         }
+        response.listeNationalite = result[0];
+        response.listeEcurie = result[1];
+        response.pilote=result[2][0];
+        var str=response.pilote.PILDATENAIS.toString();
+
+        var array = str.split(" ");
+        console.log(array);
+
+        response.dateJour=array[2];
+        response.dateMois=array[1];
+        response.dateAnnee=array[3];
+
+        console.log(response.dateJour);
+
+        if(response.dateMois=='Dec'){
+          response.dateMois=12;
+        }
+        else if (response.dateMois=='Nov') {
+          response.dateMois=11;
+        }
+        else if (response.dateMois=='Oct') {
+          response.dateMois=10;
+        }
+        else if (response.dateMois=='Sep') {
+          response.dateMois=9;
+        }
+        else if (response.dateMois=='Aug') {
+          response.dateMois=8;
+        }
+        else if (response.dateMois=='Jul') {
+          response.dateMois=7;
+        }
+        else if (response.dateMois=='Jun') {
+          response.dateMois=6;
+        }
+        else if (response.dateMois=='May') {
+          response.dateMois=5;
+        }
+        else if (response.dateMois=='Apr') {
+          response.dateMois=4;
+        }
+        else if (response.dateMois=='Mar') {
+          response.dateMois=3;
+        }
+        else if (response.dateMois=='Feb') {
+          response.dateMois=2;
+        }
+        else if (response.dateMois=='Jan') {
+          response.dateMois=1;
+        }
+        console.log(response.dateMois);
+        console.log(response.dateAnnee);
+
+
+        //console.log(response.listeEcurie);
+
+        response.render('modifierPilote', response);
+
+        }
+        );
+      };
+
+
+    module.exports.FinirAjouterPilote = 	function(request, response){
+       response.title = 'Répertoire des pilotes';
+       console.log(request.body.date);
+
+         model.ajouterPilote(request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date, function (err, result) {
+
+               if (err) {
+                   // gestion de l'erreur
+                   console.log(err);
+                   return;
+               }
+
+               response.listePilote = result;
+
+               //console.log(result);
+
+          console.log(response.listePilote);
+          response.render('validationAjoutPilote', response);
+          });
+      }
+
+
+      module.exports.FinirModifierPilote = 	function(request, response){
+         response.title = 'Répertoire des pilotes';
+         console.log(request.body.date);
+
+           model.modifierPilote(request.body.num,request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date, function (err, result) {
+
+                 if (err) {
+                     // gestion de l'erreur
+                     console.log(err);
+                     return;
+                 }
+
+                 response.listePilote = result;
+
+                 //console.log(result);
+
+            console.log(response.listePilote);
+            response.render('validationAjoutPilote', response);
+            });
+        }
+
+
+    module.exports.DescriptionPilote = 	function(request, response){
+      let data = request.params.num;
+      response.title = 'descriptionPilote';
+
+      async.parallel (
+        [
+         function(callback){
+           model.getListePilote(function (err,result){ callback(null,result)});
+         },
+         function(callback){
+           model.getPilotesDescription(data, (function (err, result){callback(null,result)}));
+         },
+         function(callback){
+           model.getPiloteSponsor(data,(function(err,result){callback(null,result)}));
+         },
+         function(callback){
+           model.getPilotePhoto(data,(function(err,result){callback(null,result)}));
+         },
+       ],
+       function(err,result){
+
+         if (err) {
+             // gestion de l'erreur
+             console.log(err);
+             return;
+         }
+
+        response.listePilote = result[0];
+        response.pilote = result[1][0];
+        console.log(response.pilote);
+
+        response.sponsor=result[2];
+        //console.log(response.sponsor)
+        response.photos=result[3];
+
+
+        response.render('descriptionPilote', response);
+
+
+        }
+        );
+      };
+
+
+      module.exports.SupprimerPilote = 	function(request, response){
+        response.title = 'nomPilotes';
+        let data = request.params.num;
+
+
+        async.parallel (
+          [
+           function(callback){
+             model.supprimerPilote(data,function (err,result){ callback(null,result)});
+           },
+           function(callback){
+             model.supprimerCoursePilote(data,function (err, result){callback(null,result)});
+           },
+           function(callback){
+             model.supprimerEssaisPilote(data,function (err, result){callback(null,result)});
+           },
+           function(callback){
+             model.supprimerPhotoPilote(data,function (err, result){callback(null,result)});
+           },
+           function(callback){
+             model.supprimerSponsorisePilote(data,function (err, result){callback(null,result)});
+           },
+         ],
+
+         function(err,result){
+
+           if (err) {
+               // gestion de l'erreur
+               console.log(err);
+               return;
+           }
+
+          response.render('validationSuppressionPilote', response);
+
+
+          }
+          );
+        };

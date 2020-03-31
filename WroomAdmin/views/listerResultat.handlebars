@@ -1,0 +1,16 @@
+<img src="/image/cat_resultat.png"/>
+
+<h1>Resultats</h1>
+
+<p>Selectionner un grand pris : </p>
+
+<form id="loginformA" action="saisirResultat" method="post">
+  <div>
+      <select id="nationalite-select" name="gpnum">
+        {{#each listeResultat}}
+        <option value="{{this.GPNUM}}"> {{this.GPNOM}}</option>
+        {{/each}}
+      </select>
+  </div>
+<input type="submit" value="AJOUTER"> </input>
+</form>

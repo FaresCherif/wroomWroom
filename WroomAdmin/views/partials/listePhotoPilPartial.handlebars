@@ -1,0 +1,9 @@
+<link href="path/to/lightbox.css" rel="stylesheet" />
+<div class=listeImage>
+{{#each photos}}
+<div class="image">
+  <p><a href="/image/pilote/{{this.PHOADRESSE}}" data-lightbox="image-1" data-title="My caption"><img class="img"  src="/image/pilote/{{this.PHOADRESSE}}"></a> </p>
+</div>
+{{/each}}
+</div>
+<script src="path/to/lightbox.js"></script>

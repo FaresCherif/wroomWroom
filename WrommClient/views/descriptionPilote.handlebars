@@ -1,0 +1,31 @@
+{{>lettrePartial}}
+<link href="../../public/css/lightbox.css" rel="stylesheet" />
+
+<div class="survol">
+		<a href="/descriptionPilote/{{pilote.PILNUM}}"> <img class="img" src="/image/pilote/{{pilote.PHOADRESSE}}"></a><br>
+
+		<div class="description">
+			<p><b> Nom :</b> {{pilote.PILNOM}} {{ pilote.PILPRENOM}} </p>
+    <p><b>Date de naissance :</b> {{formatDate pilote.PILDATENAIS 'LL'}}</p>
+    <p><b>Nationalité : </b>{{pilote.PAYNOM}}</p>
+		<p>{{#if pilote.ECUNOM}}
+		<b>Ecurie :</b> {{pilote.ECUNOM}}
+		{{else}}
+		<b>Ecurie : </b>Pas d'écurie cette année
+		{{/if}}
+		</p>
+	</div>
+	<div class="description">
+    <p><b>Poids :</b> {{pilote.PILPOIDS}} Kg</p>
+    <p><b>Taille :</b> {{pilote.PILTAILLE}} Cm</p>
+</div>
+</div>
+
+
+		{{>sponsorPartial}}
+
+    <p><b>Qui suis-je ? : </b>{{pilote.PILTEXTE}}</p>
+
+		{{>listePhotoPilPartial}}
+
+		<script src="../../public/css/lightbox.css"></script>

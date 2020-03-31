@@ -1,0 +1,23 @@
+<h1>Ajouter un pilote</h1>
+
+<form id="loginformA" action="FinirAjouterSponsor" method="post">
+
+  <div>
+      <label for="login">Nom: </label>
+      <input type="text" id="login" name="nom"></input>
+  </div>
+  <div>
+      <label for="login">Secteur d'activite: </label>
+      <input type="text" id="login" name="seactivite"></input>
+  </div>
+  <div>
+      <label for="login">Ecurie sponsorisee: </label>
+      <select id="nationalite-select" name="ecurie">
+        <option value=null> Aucune </option>
+        {{#each ListerEcurie}}
+        <option value="{{this.ecunum}}"> {{this.ecunom}}</option>
+        {{/each}}
+      </select>
+  </div>
+<input type="submit" value="AJOUTER"> </input>
+</form>

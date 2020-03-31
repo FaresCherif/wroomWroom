@@ -1,0 +1,39 @@
+<h1>Modifier un circuit</h1>
+
+<form id="loginformA" action="modifierCircuit" method="post">
+
+  <div>
+      <label for="login">Nom: </label>
+      <input type="text" id="login" name="nom" value="{{circuit.CIRNOM}}"></input>
+  </div>
+  <div>
+      <label for="login">Longueur: </label>
+      <input type="text" id="login" name="longueur" value="{{circuit.CIRLONGUEUR}}"></input>
+  </div>
+  <div>
+      <label for="login">Pays: </label>
+      <select id="nationalite-select" name="nationalite">
+        {{#each listePays}}
+        <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <div>
+      <label for="login">Image: </label>
+
+     <input type="file" name="parcourir" multiple="multiple"><br>
+
+  </div>
+  <div>
+      <label for="login">Nombre de spectateur : </label>
+      <input type="text" id="login" name="nbspectateur" value="{{circuit.CIRNBSPECTATEURS}}"></input>
+  </div>
+  <div>
+      <label for="login">Description: </label>
+      <input type="text" id="login" name="description" value="{{circuit.CIRTEXT}}"></input>
+  </div>
+
+  <input id="prodId" name="num" type="hidden" value="{{circuit.CIRNUM}}">
+
+<input type="submit" value="AJOUTER"> </input>
+</form>

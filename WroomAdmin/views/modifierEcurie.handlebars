@@ -1,0 +1,38 @@
+<h1>Modifier une Ecurie</h1>
+
+<form action="modifierEcurie" method="post" ref='uploadForm'
+      id='uploadForm' >
+
+  <div>
+      <label for="login">Nom: </label>
+      <input type="text" id="login" name="nom" value="{{ecurie.ECUNOM}}"></input>
+  </div>
+  <div>
+      <label for="login">Directeur: </label>
+      <input type="text" id="login" name="directeur" value="{{ecurie.ECUNOMDIR}}"></input>
+  </div>
+  <div>
+      <label for="login">Adresse du siege: </label>
+      <input type="text" id="login" name="adsiege" value="{{ecurie.ECUADRSIEGE}}"></input>
+  </div>
+  <div>
+      <label for="login">Points: </label>
+      <input type="text" id="login" name="points" value="{{ecurie.ECUPOINTS}}"></input>
+  </div>
+  <div>
+      <label for="login">Pays: </label>
+      <select id="nationalite-select" name="nationalite">
+        {{#each listePays}}
+        <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <div>
+      <label for="login">Image: </label>
+      <input type="file" id="login" name="image"></input>
+  </div>
+
+  <input id="prodId" name="num" type="hidden" value="{{ecurie.ECUNUM}}">
+
+<input type="submit" value="AJOUTER"> </input>
+</form>

@@ -1,0 +1,23 @@
+{{>descriptionEcuriePartial}}
+
+<p><b>Nom : </b> {{ecurie.ECUNOM}}</p>
+<p><b>Directeur : </b> {{ecurie.ECUNOMDIR}}</p>
+<p><b>Adresse :</b>{{ecurie.ECUADRSIEGE}}</p>
+<p><b>Pays :</b>{{ecurie.PAYNOM}}</p>
+
+{{#if fournisseurPneu.FPNOM}}
+<p><b>Fournisseur de pneumatique :</b>{{fournisseurPneu.FPNOM}}</p>
+{{/if}}
+
+<img class="img" src="/image/ecurie/{{ecurie.ECUADRESSEIMAGE}}">
+
+{{#if listePilote}}
+<p><b>Pilotes :</b></p>
+{{#each listePilote}}
+<p><a href="/descriptionPilote/{{this.PILNUM}}">{{this.PILNOM}}</a></p>
+{{/each}}
+{{else}}
+<p><b>Cette écurie ne participe pas au championnat cette année</b></p>
+{{/if}}
+
+{{>listePhotoVoitEcuriePartial}}

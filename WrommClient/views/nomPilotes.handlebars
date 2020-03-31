@@ -1,0 +1,16 @@
+
+<h1> Mettre ici le nom des pilotes </h1>
+
+{{>lettrePartial}}
+
+
+<div class="listeImage">
+
+{{#each pilote}}
+	<div class="image">
+		<a href="/descriptionPilote/{{this.PILNUM}}"> <img class="img" src="/image/pilote/{{this.PHOADRESSE}}"></a>
+			<p>{{this.PILNOM}} {{ this.PILPRENOM}}</p>
+		</div>
+ {{/each}}
+
+</div>

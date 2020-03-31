@@ -1,0 +1,34 @@
+<h1>Ajouter une Ecurie</h1>
+
+<form id="loginformA" action="ajouterEcurie" method="post">
+
+  <div>
+      <label for="login">Nom: </label>
+      <input type="text" id="login" name="nom"></input>
+  </div>
+  <div>
+      <label for="login">Directeur: </label>
+      <input type="text" id="login" name="directeur"></input>
+  </div>
+  <div>
+      <label for="login">Adresse du siege: </label>
+      <input type="text" id="login" name="adsiege"></input>
+  </div>
+  <div>
+      <label for="login">Points: </label>
+      <input type="text" id="login" name="points"></input>
+  </div>
+  <div>
+      <label for="login">Pays: </label>
+      <select id="nationalite-select" name="nationalite">
+        {{#each listePays}}
+        <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <div>
+      <label for="login">Image: </label>
+      <input type="file" id="login" name="image"></input>
+  </div>
+<input type="submit" value="AJOUTER"> </input>
+</form>

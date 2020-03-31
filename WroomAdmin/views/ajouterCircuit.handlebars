@@ -1,0 +1,36 @@
+<h1>Ajouter un circuit</h1>
+
+<form id="loginformA" action="ajouterCircuit" method="post">
+
+  <div>
+      <label for="login">Nom: </label>
+      <input type="text" id="login" name="nom"></input>
+  </div>
+  <div>
+      <label for="login">Longueur: </label>
+      <input type="text" id="login" name="longueur"></input>
+  </div>
+  <div>
+      <label for="login">Pays: </label>
+      <select id="nationalite-select" name="nationalite">
+        {{#each listePays}}
+        <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <div>
+      <label for="login">Image: </label>
+
+     <input type="file" name="parcourir" multiple="multiple"><br>
+
+  </div>
+  <div>
+      <label for="login">Nombre de spectateur : </label>
+      <input type="text" id="login" name="nbspectateur"></input>
+  </div>
+  <div>
+      <label for="login">Description: </label>
+      <input type="text" id="login" name="description"></input>
+  </div>
+<input type="submit" value="AJOUTER"> </input>
+</form>

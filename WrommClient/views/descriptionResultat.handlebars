@@ -1,0 +1,26 @@
+<div class="survol">
+  <div class=tableau>
+<p><b>{{InfoResultat.GPNOM}} ({{formatDate InfoResultat.GPDATE 'L'}})</p></b>
+<table>
+  <thead>
+    <td><b>Place</b></td>
+    <td><b>Pilote</b></td>
+    <td><b>Temps</b></td>
+    <td><b>Nb points</b></td>
+  </thead>
+
+{{#each descriptionResultat}}
+<tr>
+<td>{{this.PTPLACE}}</td>
+<td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
+<td>{{this.TEMPSCOURSE}}</td>
+<td>{{this.PTNBPOINTSPLACE}}</td>
+</tr>
+{{/each}}
+
+</table>
+<p>{{InfoResultat.GPCOMMENTAIRE}}</b>
+</div>
+
+  {{>listeResultatPartial}}
+</div>

@@ -1,0 +1,9 @@
+{{#if sponsor}}
+  <p>
+    <b>Principaux sponsors : </b>
+
+  {{#each sponsor}}
+    <br>
+    <b>{{this.SPONOM}}</b> ({{this.SPOSECTACTIVITE}})
+  {{/each}}
+{{/if}}

@@ -1,0 +1,23 @@
+<img src="/image/cat_circuit.png"/>
+
+<h1> Gestion des circuits </h1>
+
+<img src="/image/act_add.png"/> <a href="circuit/Ajouter">Ajouter un circuit</a>
+
+<table>
+  <thead>
+    <td><b>Nom</b></td>
+    <td><b>Longueur</b></td>
+    <td><b>Nombre de spectateur</b></td>
+    <td><b>Actions</b></td>
+  </thead>
+{{#each listeCircuit}}
+<tr>
+  <td>{{this.CIRNOM}}</td>
+  <td>{{this.CIRLONGUEUR}}</td>
+  <td>{{this.CIRNBSPECTATEURS}}</td>
+  <td><img src="/image/act_edit.png"/> <a href="circuit/modifier/{{this.CIRNUM}}">Modifier</a> <img src="/image/act_delete.png"/>  <a href="circuit/supprimer/{{this.CIRNUM}}">supprimer</a></td>
+</tr>
+{{/each}}
+
+</table>

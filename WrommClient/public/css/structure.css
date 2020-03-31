@@ -1,0 +1,177 @@
+    body {
+    	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
+    	background: url('/image/fond.jpg') repeat;
+		  font-size:0.8em;
+    	margin: 0;
+    	padding: 0;
+    	text-align: center;
+    	color: #000000;
+    }
+    .monBody #container {
+    	width: 900px;
+    	margin: 0 auto;
+    	text-align: left;
+    	background:#ffffff;
+    }
+    .monBody #header {
+		    height:300px;
+    }
+	.monBody #menu {
+		height:22px;
+		color:#ffffff;
+		font-size:1.4em;
+		background:#000000;
+    }
+  .monBody #contenu {
+		 padding:20px;
+    }
+    .monBody #footer {
+    padding: 0 10px;
+		font-size:0.8em;
+		text-align:center;
+		height:150px;
+		background:url(/image/footer.jpg) no-repeat;
+    }
+	#menu a	{
+		color:#ffffff;
+		text-decoration:none;
+	}
+  #menu {
+    text-align: center;
+  }
+  #LogoNode {
+      max-height: 20%;
+      max-width: 20%;
+  }
+  .tabpayscir  {
+ 	  float:right;
+ 	  padding:10px;
+ 	  border:1px solid black;
+ 	  margin:10px
+ 	  -moz-border-radius:15px;
+ 	  border-radius:15px;
+ }
+
+.contour{
+border:1px solid black;
+-moz-border-radius:15px;
+border-radius:15px;
+padding-left:10px;
+margin-left: 60%;
+
+}
+
+ .myboth  {
+ 	  clear:both;
+ }
+ a  {
+ 	text-decoration:none;
+ 	color:#0072ff;
+ }
+ .lienNotFound {align:center; style="background-color: #1d81b1;color: #FFFFFF;text-transform: uppercase;"}
+ .photoNotFound {
+   max-height: 40%;
+   max-width: 40%;
+}
+
+
+.img{
+    width : 140px ;
+    height : 150px ;
+}
+
+.listeImage{
+  display: flex;
+  justify-content: center;
+
+}
+
+.listeImage p{
+    text-align: center;
+}
+
+.image{
+  margin-right: 40px;
+}
+
+.imageDrapeau{
+  width : 70px ;
+  height : 80px ;
+}
+
+.tooltip
+{
+  text-decoration:none;
+  position:relative;
+}
+
+
+.tooltip span
+{
+  display:none;
+
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  color:black;
+  background:white;
+}
+
+
+.tooltip span img
+{
+  float:left;
+  margin:0px 8px 8px 0;
+}
+
+
+.tooltip:hover span
+{
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1000;
+  width:auto;
+  width:300px;
+  height:180px;
+  border:1px solid black;
+  margin-top:12px;
+  margin-left:32px;
+  overflow:hidden;
+  padding:8px;
+}
+
+.survol{
+  display: flex;
+}
+
+.pilote{
+  margin-bottom: 30px;
+}
+.ecurie{
+  padding-right: 20%;
+}
+
+.circuit{
+  display: flex;
+  margin-right: -200px;
+}
+
+.description{
+  margin-left: 20px;
+}
+
+.tableau{
+  margin-right: -500px;
+}
+
+.tableau table, .tableau th, .tableau td {
+  border: 1px solid black;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+td{
+  padding:10px;
+}
