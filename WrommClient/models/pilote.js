@@ -92,7 +92,7 @@ module.exports.getPilotePhoto = function (num,callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ='SELECT PHOADRESSE from pilote p join photo ph on p.PILNUM=ph.PILNUM where p.PILNUM="' + num+ '" AND PHONUM!=1';
+						let sql ='SELECT PHOADRESSE,PHOCOMMENTAIRE from pilote p join photo ph on p.PILNUM=ph.PILNUM where p.PILNUM="' + num+ '" AND PHONUM!=1';
 						sql= sql
 						//console.log (sql);
             connexion.query(sql, callback);

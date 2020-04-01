@@ -90,7 +90,7 @@ module.exports.Repertoire = 	function(request, response){
         //console.log(response.sponsor)
         response.photos=result[3];
 
-
+        console.log(response.photos);
         response.render('descriptionPilote', response);
 
 
