@@ -7,8 +7,7 @@ let express         = require('express'),
 
     const fileUpload = require('express-fileupload');
 
-let app = express();
-app.use(fileUpload());
+const app = express();
 app.use(fileUpload({
     createParentPath: true
 }));
