@@ -8,7 +8,10 @@ let express         = require('express'),
     const fileUpload = require('express-fileupload');
 
 let app = express();
-
+app.use(fileUpload());
+app.use(fileUpload({
+    createParentPath: true
+}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('port', 6900);
 app.set('views', path.join(__dirname, 'views'));

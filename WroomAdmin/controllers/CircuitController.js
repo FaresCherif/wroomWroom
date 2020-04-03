@@ -78,16 +78,15 @@ module.exports.modifierCircuit = function(request, response){
   );
   };
 
-
 module.exports.FinirAjouterCircuit = function(request, response){
+  let img=request.files.img;
 
   response.title = 'Liste des circuits';
 
-  console.log(path);
+   img.mv('.\\public\\image\\ecurie\\' + img.name);
 
 
     model.ajouterCircuit(request.body.parcourir,request.body.nom,request.body.nationalite,request.body.longueur,request.body.nbspectateur,request.body.description, function (err, result) {
-
       if (err) {
           // gestion de l'erreur
           console.log(err);
