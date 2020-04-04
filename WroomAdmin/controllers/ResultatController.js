@@ -3,6 +3,9 @@ let async=require('async');
 
   // //////////////////////////L I S T E R    R E S U L T A T S
 module.exports.ListerResultat = function(request, response){
+	var connect = request.cookies.connect;
+
+  if(connect=="true"){
 
 	response.title = 'Liste des résulats des grands prix';
 
@@ -20,10 +23,19 @@ module.exports.ListerResultat = function(request, response){
 				response.render('listerResultat', response);
 
 	 });
+ }
+ else{
+	 response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+	 response.render('home', response);
+ }
 
 };
 
 module.exports.SaisirResultat = function(request, response){
+	var connect = request.cookies.connect;
+
+  if(connect=="true"){
 
 	response.title = 'Liste des résulats des grands prix';
 
@@ -41,10 +53,19 @@ module.exports.SaisirResultat = function(request, response){
 				response.render('listerResultat', response);
 
 	 });
+ }
+ else{
+	 response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+	 response.render('home', response);
+ }
 
 };
 
 module.exports.DescriptionResultat = function(request, response){
+	var connect = request.cookies.connect;
+
+  if(connect=="true"){
 	let data = request.body.gpnum;
 
 	response.title = 'Liste des résulats des grands prix';
@@ -81,5 +102,10 @@ module.exports.DescriptionResultat = function(request, response){
 				response.render('descriptionResultat', response);
 
 	 });
+ }
+ else{
+ 	response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
 
+ 	response.render('home', response);
+ }
 };

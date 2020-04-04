@@ -1,19 +1,25 @@
 
 <table>
   <thead>
+    <td></td>
     <td>Place</td>
     <td>Pilote</td>
     <td>Temps</td>
     <td>Points</td>
   </thead>
 
-{{#each descriptionResultat}}
-<tr>
-<td>{{this.PTPLACE}}</td>
-<td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
-<td>{{this.TEMPSCOURSE}}</td>
-<td>{{this.PTNBPOINTSPLACE}}</td>
-</tr>
-{{/each}}
+  <form id="loginformA" action="ajouterPilote" method="post">
+
+    {{#each descriptionResultat}}
+    <tr>
+      <td><img src="/image/act_delete.png"/> </td>
+    <td>{{this.PTPLACE}}</td>
+    <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
+    <td>{{this.TEMPSCOURSE}}</td>
+    <td>{{this.PTNBPOINTSPLACE}}</td>
+    </tr>
+    {{/each}}
+
+  </form>
 
 </table>

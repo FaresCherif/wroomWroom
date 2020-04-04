@@ -7,6 +7,9 @@ const app = express();
    // //////////////////////// L I S T E R  E C U R I E S
 
 module.exports.ListerEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
    response.title = 'Liste des écuries';
     model.getListeEcurie( function (err, result) {
         if (err) {
@@ -20,8 +23,17 @@ module.exports.ListerEcurie = function(request, response){
 response.render('listerEcurie', response);
 });
 }
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
+}
 
 module.exports.AjouterEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   response.title = 'Liste des circuits';
     model.getListePays( function (err, result) {
 
@@ -35,9 +47,18 @@ module.exports.AjouterEcurie = function(request, response){
 
     response.render('ajoutEcurie', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.FinirModifierEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   response.title = 'Liste des circuits';
 app.use(fileUpload());
     model.modifierEcurie(request.body.num,request.body.nom,request.body.directeur,request.body.adsiege,request.body.points,request.body.nationalite, function (err, result) {
@@ -51,12 +72,21 @@ app.use(fileUpload());
       console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
       console.log(request.files);
       console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-      
+
     response.render('FinirModifierEcurie', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.modifierEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -87,10 +117,19 @@ module.exports.modifierEcurie = function(request, response){
     response.render('modifierEcurie', response);
   }
   );
+}
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
   };
 
 
 module.exports.FinirAjouterEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   response.title = 'Liste des circuits';
     model.ajoutEcurie(request.body.nom,request.body.directeur,request.body.adsiege,request.body.points,request.body.nationalite, function (err, result) {
 
@@ -104,10 +143,19 @@ module.exports.FinirAjouterEcurie = function(request, response){
 
     response.render('validationAjoutEcurie', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 
 module.exports.DescriptionEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let data = request.params.num;
 
    response.title = 'Liste des écuries';
@@ -148,8 +196,17 @@ module.exports.DescriptionEcurie = function(request, response){
 response.render('descriptionEcurie', response);
 });
 }
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
+}
 
 module.exports.supprimerEcurie = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -184,4 +241,10 @@ module.exports.supprimerEcurie = function(request, response){
     response.render('validationSuppressionCircuit', response);
   }
   );
+}
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
   };

@@ -17,6 +17,23 @@ module.exports.getListeResultat = function (callback) {
       });
 };
 
+module.exports.getListeDernierResultat = function (callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql ="SELECT * FROM " +
+                            "grandprix g JOIN circuit c ON g.CIRNUM=c.CIRNUM JOIN pays p on p.PAYNUM=c.PAYNUM where GPDATE=(select max(GPDATE) from grandprix)";
+						//console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
 module.exports.DescriptionResultat = function (num,callback) {
    // connection à la base
 	db.getConnection(function(err, connexion){

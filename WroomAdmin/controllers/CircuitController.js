@@ -9,7 +9,9 @@ var formidable = require('formidable'),
     path = require("path");
 
 module.exports.ListerCircuit = function(request, response){
+  var connect = request.cookies.connect;
 
+  if(connect=="true"){
   response.title = 'Liste des circuits';
     model.getListeVille( function (err, result) {
 
@@ -23,10 +25,18 @@ module.exports.ListerCircuit = function(request, response){
 
     response.render('listerCircuit', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.AjouterCircuit = function(request, response){
+  var connect = request.cookies.connect;
 
+  if(connect=="true"){
   response.title = 'Liste des circuits';
 
 
@@ -43,9 +53,18 @@ module.exports.AjouterCircuit = function(request, response){
 
     response.render('ajouterCircuit', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.modifierCircuit = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -76,9 +95,18 @@ module.exports.modifierCircuit = function(request, response){
     response.render('modifierCircuit', response);
   }
   );
+}
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
   };
 
 module.exports.FinirAjouterCircuit = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let img=request.files.img;
 
   response.title = 'Liste des circuits';
@@ -97,9 +125,18 @@ module.exports.FinirAjouterCircuit = function(request, response){
 
     response.render('validationAjoutCircuit', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.FinirModifierCircuit = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
 
   response.title = 'Liste des circuits';
 
@@ -118,9 +155,18 @@ module.exports.FinirModifierCircuit = function(request, response){
 
     response.render('validationAjoutCircuit', response);
     });
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
 }
 
 module.exports.DescriptionCircuit = function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -151,10 +197,19 @@ module.exports.DescriptionCircuit = function(request, response){
     response.render('descriptionCircuit', response);
   }
   );
+}
+else{
+  response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+  response.render('home', response);
+}
   };
 
 
   module.exports.supprimerCircuit = function(request, response){
+    var connect = request.cookies.connect;
+
+    if(connect=="true"){
     let data = request.params.num;
     response.title = 'Description des circuits';
 
@@ -185,4 +240,10 @@ module.exports.DescriptionCircuit = function(request, response){
       response.render('validationSuppressionCircuit', response);
     }
     );
+  }
+  else{
+    response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+    response.render('home', response);
+  }
     };

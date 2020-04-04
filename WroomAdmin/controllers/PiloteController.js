@@ -4,6 +4,10 @@ let async=require('async');
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 
 module.exports.Repertoire = 	function(request, response){
+  var connect = request.cookies.connect;
+
+  if(connect=="true"){
+
    response.title = 'Répertoire des pilotes';
      model.getListePilote( function (err, result) {
 
@@ -15,15 +19,24 @@ module.exports.Repertoire = 	function(request, response){
 
            response.listePilote = result;
 
-           //console.log(result);
-      console.log(response.listePilote);
+
       response.render('repertoirePilotes', response);
       });
+    }
+    else{
+      response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+      response.render('home', response);
+    }
   }
 
 
 
   module.exports.AjouterPilote = 	function(request, response){
+    var connect = request.cookies.connect;
+
+    if(connect=="true"){
+
     response.title = 'nomPilotes';
 
     async.parallel (
@@ -52,9 +65,19 @@ module.exports.Repertoire = 	function(request, response){
 
       }
       );
+    }
+    else{
+      response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+      response.render('home', response);
+    }
     };
 
     module.exports.ModifierPilote = 	function(request, response){
+      var connect = request.cookies.connect;
+
+      if(connect=="true"){
+
       response.title = 'nomPilotes';
       let data = request.params.num;
 
@@ -139,10 +162,20 @@ module.exports.Repertoire = 	function(request, response){
 
         }
         );
+      }
+        else{
+          response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+          response.render('home', response);
+        }
       };
 
 
     module.exports.FinirAjouterPilote = 	function(request, response){
+      var connect = request.cookies.connect;
+
+      if(connect=="true"){
+
        response.title = 'Répertoire des pilotes';
        console.log(request.body.date);
 
@@ -161,10 +194,20 @@ module.exports.Repertoire = 	function(request, response){
           console.log(response.listePilote);
           response.render('validationAjoutPilote', response);
           });
+        }
+          else{
+            response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+            response.render('home', response);
+          }
       }
 
 
       module.exports.FinirModifierPilote = 	function(request, response){
+        var connect = request.cookies.connect;
+
+        if(connect=="true"){
+
          response.title = 'Répertoire des pilotes';
          console.log(request.body.date);
 
@@ -183,10 +226,20 @@ module.exports.Repertoire = 	function(request, response){
             console.log(response.listePilote);
             response.render('validationAjoutPilote', response);
             });
+          }
+          else{
+            response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+            response.render('home', response);
+          }
         }
 
 
     module.exports.DescriptionPilote = 	function(request, response){
+      var connect = request.cookies.connect;
+
+      if(connect=="true"){
+
       let data = request.params.num;
       response.title = 'descriptionPilote';
 
@@ -227,10 +280,20 @@ module.exports.Repertoire = 	function(request, response){
 
         }
         );
+      }
+      else{
+        response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+        response.render('home', response);
+      }
       };
 
 
       module.exports.SupprimerPilote = 	function(request, response){
+        var connect = request.cookies.connect;
+
+        if(connect=="true"){
+
         response.title = 'nomPilotes';
         let data = request.params.num;
 
@@ -261,10 +324,17 @@ module.exports.Repertoire = 	function(request, response){
                console.log(err);
                return;
            }
+           console.log(request.cookies.connect);
 
           response.render('validationSuppressionPilote', response);
 
 
           }
           );
+        }
+        else{
+          response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+          response.render('home', response);
+        }
         };

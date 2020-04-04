@@ -1,5 +1,4 @@
 
-<h1> Mettre ici le nom des pilotes </h1>
 
 {{>lettrePartial}}
 
@@ -9,7 +8,7 @@
 {{#each pilote}}
 	<div class="image">
 		<a href="/descriptionPilote/{{this.PILNUM}}"> <img class="img" src="/image/pilote/{{this.PHOADRESSE}}"></a>
-			<p>{{this.PILNOM}} {{ this.PILPRENOM}}</p>
+			<p><b>{{ this.PILPRENOM}} <br> {{this.PILNOM}}</b></p>
 		</div>
  {{/each}}
 

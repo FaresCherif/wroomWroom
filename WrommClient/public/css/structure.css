@@ -7,6 +7,19 @@
     	text-align: center;
     	color: #000000;
     }
+    .centre{
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .encadre{
+      border : 1px black solid;
+      border-radius: 20px;
+      text-align: center;
+      width : 50%;
+      margin-left: 25%;
+      padding-bottom: 10px;
+    }
     .monBody #container {
     	width: 900px;
     	margin: 0 auto;

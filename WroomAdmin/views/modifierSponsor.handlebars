@@ -1,14 +1,15 @@
 <h1>Modifier un Sponsor</h1>
 
+<div class="gauche">
 <form id="loginformA" action="FinirModifierSponsor" method="post">
 
   <div>
       <label for="login">Nom: </label>
-      <input type="text" id="login" name="nom" value="{{sponsor.SPONOM}}"></input>
+      <input type="text" id="login" name="nom" value="{{sponsor.SPONOM}}" class="arrondi"></input>
   </div>
   <div>
       <label for="login">Secteur d'activite: </label>
-      <input type="text" id="login" name="seactivite" value="{{sponsor.SPOSECTACTIVITE}}"></input>
+      <input type="text" id="login" name="seactivite" value="{{sponsor.SPOSECTACTIVITE}}" class="arrondi"></input>
   </div>
 
   <div>
@@ -24,5 +25,6 @@
 
   <input id="prodId" name="num" type="hidden" value="{{sponsor.SPONUM}}">
 
-<input type="submit" value="AJOUTER"> </input>
+<input type="submit" value="MODIFIER" class="Degrade"> </input>
 </form>
+</div>

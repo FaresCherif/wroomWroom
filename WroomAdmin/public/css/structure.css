@@ -7,6 +7,28 @@
     	text-align: center;
     	color: #000000;
     }
+
+  .connexion{
+  position: absolute;
+  top: 0; left: 0;
+  width:100%;
+  color:white;
+  height:100%;
+  background-color: black;
+}
+    .Degrade {
+background-image:linear-gradient(black, red);
+color: white;
+width:10%;
+height:35px;
+}
+.arrondi{
+  border-radius: 20px;
+
+}
+.gauche{
+  text-align: left;
+}
     table{
       margin:auto;
       border-width:1px;

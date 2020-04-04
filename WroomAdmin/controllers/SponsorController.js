@@ -2,7 +2,9 @@ let model = require('../models/sponsor.js');
 let async=require('async');
 
 module.exports.ListerSponsor = function(request, response){
+	var connect = request.cookies.connect;
 
+  if(connect=="true"){
 	response.title = 'Liste des résulats des grands prix';
 
 	model.getListeSponsor( function (err, result) {
@@ -19,10 +21,19 @@ module.exports.ListerSponsor = function(request, response){
 				response.render('ListerSponsor', response);
 
 	 });
+ }
+ else{
+	 response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+	 response.render('home', response);
+ }
 
 };
 
 module.exports.AjouterSponsor = function(request, response){
+	var connect = request.cookies.connect;
+
+	if(connect=="true"){
 
 	response.title = 'Liste des résulats des grands prix';
 
@@ -39,10 +50,18 @@ module.exports.AjouterSponsor = function(request, response){
 				response.render('AjouterSponsor', response);
 
 	 });
+ }
+ else{
+ 	response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
 
+ 	response.render('home', response);
+ }
 };
 
 module.exports.ModifierSponsor = function(request, response){
+	var connect = request.cookies.connect;
+
+	if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -72,9 +91,18 @@ module.exports.ModifierSponsor = function(request, response){
     response.render('modifierSponsor', response);
   }
   );
+}
+else{
+	response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+	response.render('home', response);
+}
   };
 
 module.exports.FinirAjouterSponsor = function(request, response){
+	var connect = request.cookies.connect;
+
+	if(connect=="true"){
 
 	response.title = 'Liste des résulats des grands prix';
 
@@ -108,11 +136,19 @@ module.exports.FinirAjouterSponsor = function(request, response){
 				response.render('validationAjoutSponsor', response);
 
     });
+	}
+	else{
+		response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
 
+		response.render('home', response);
+	}
 };
 
 
 module.exports.FinirModifierSponsor = function(request, response){
+	var connect = request.cookies.connect;
+
+	if(connect=="true"){
 
 	response.title = 'Liste des résulats des grands prix';
 
@@ -147,7 +183,12 @@ console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 				response.render('validationAjoutSponsor', response);
 
     });
+	}
+	else{
+		response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
 
+		response.render('home', response);
+	}
 };
 
 
@@ -155,6 +196,9 @@ console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 module.exports.SupprimerSponsor = function(request, response){
+	var connect = request.cookies.connect;
+
+	if(connect=="true"){
   let data = request.params.num;
   response.title = 'Description des circuits';
 
@@ -186,4 +230,10 @@ module.exports.SupprimerSponsor = function(request, response){
     response.render('validationSuppressionSponsor', response);
   }
   );
+}
+else{
+	response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
+
+	response.render('home', response);
+}
   };
