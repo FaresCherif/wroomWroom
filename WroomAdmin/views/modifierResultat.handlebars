@@ -1,0 +1,40 @@
+
+<table>
+  <thead>
+    <td></td>
+    <td>Place</td>
+    <td>Pilote</td>
+    <td>Temps</td>
+    <td>Points</td>
+  </thead>
+
+<form id="loginformA" action="terminerModifierResultat" method="post">
+
+    {{#each descriptionResultat}}
+    <tr>
+      <td><a href="/modifierResultat/{{this.PTPLACE}}/{{this.gpnum}}/{{this.PILNUM}}"><img src="/image/act_delete.png"/></a> </td>
+    <td>{{this.PTPLACE}}</td>
+    <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
+    <td>{{this.TEMPSCOURSE}}</td>
+    <td>{{this.PTNBPOINTSPLACE}}</td>
+    </tr>
+    {{/each}}
+
+    <tr>
+      <td>{{place}}</td>
+      <td>
+        <select id="nationalite-select" name="nouveauPilNum">
+          {{#each listeResultat}}
+          <option value="{{this.PILNUM}}"> {{this.PILNOM}}</option>
+          {{/each}}
+        </select>
+      </td>
+      <td><input class="petit" type="text" id="temps" name="temps"></input> : <input class="petit" type="text" id="temps" name="temps"></input> : <input class="petit" type="text" id="temps" name="temps"></input></td>
+      <td><a href="/terminerModifierResultat"><input type="submit" value="OK" class="Degrade"> </input></a></td>
+
+    </tr>
+    <input name="ancienPilNum" id="ancienPilNum" type="hidden" value={{ancienPilNum}}>
+    <input name="gpnum" id="gpnum" type="hidden" value={{gpnum}}>
+</form>
+
+</table>

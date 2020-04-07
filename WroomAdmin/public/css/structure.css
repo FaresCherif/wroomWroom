@@ -8,6 +8,12 @@
     	color: #000000;
     }
 
+.petit{
+  max-width: 20px;
+  border-radius: 20px;
+
+}
+
   .connexion{
   position: absolute;
   top: 0; left: 0;

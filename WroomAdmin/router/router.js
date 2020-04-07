@@ -54,6 +54,10 @@ module.exports = function(app){
 
  //Résultats
    app.get('/resultats', ResultatController.ListerResultat);
+   app.get('/modifierResultat/:place/:gpnum/:ancienPilNum', ResultatController.ModifierResultat);
+   app.post('/modifierResultat/:place/:gpnum/terminerModifierResultat', ResultatController.terminerModifierResultat);
+
+
    app.get('/GrandPrixDescription/:num',ResultatController.DescriptionResultat);
    app.post('/saisirResultat',ResultatController.DescriptionResultat);
 
