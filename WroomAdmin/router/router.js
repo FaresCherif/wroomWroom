@@ -30,12 +30,12 @@ module.exports = function(app){
    app.get('/circuits', CircuitController.ListerCircuit);
    app.get('/circuits/:num', CircuitController.DescriptionCircuit);
    app.get('/circuit/Ajouter', CircuitController.AjouterCircuit);
-   //app.post('/circuit/ajouterCircuit',CircuitController.FinirAjouterCircuit);
+   app.post('/circuit/ajouterCircuit',CircuitController.FinirAjouterCircuit);
    app.get('/circuit/supprimer/:num', CircuitController.supprimerCircuit);
    app.get('/circuit/modifier/:num', CircuitController.modifierCircuit);
    app.post('/circuit/modifier/modifierCircuit', CircuitController.FinirModifierCircuit);
 
-   app.post('/circuit/ajouterCircuit', async (request, response) => {
+   /*app.post('/circuit/ajouterCircuit', async (request, response) => {
        try {
            if(!request.files) {
                response.send({
@@ -63,7 +63,7 @@ module.exports = function(app){
        } catch (err) {
            response.status(500).send(err);
        }
-   });
+   });*/
 
 
 
