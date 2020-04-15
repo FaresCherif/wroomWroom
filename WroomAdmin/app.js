@@ -2,11 +2,11 @@ let express         = require('express'),
     session         = require('express-session'),
     cookieParser    = require('cookie-parser'),
     bodyParser      = require('body-parser'), //pour récupérer les résultats des post
+
     http = require('http'),
     path = require('path');
 
     const fileUpload = require('express-fileupload');
-
 
 
 const app = express();

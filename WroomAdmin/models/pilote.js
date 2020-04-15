@@ -131,7 +131,7 @@ module.exports.getPilotesDescription = function (num,callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ='SELECT * FROM pilote p join photo ph on p.PILNUM=ph.PILNUM join pays pa on pa.payNum=p.payNum left outer join ecurie e on p.ecunum=e.ecunum where p.PILNUM="' +num +'" and PHONUM=1 order by PILNOM';
+						let sql ='SELECT * FROM pilote p join pays pa on pa.payNum=p.payNum left outer join ecurie e on p.ecunum=e.ecunum where p.PILNUM="' +num +'" order by PILNOM';
 						sql= sql
 						//console.log (sql);
             connexion.query(sql, callback);
@@ -278,6 +278,26 @@ module.exports.getMotDePasse = function (num,callback) {
         	  // execution de la requête SQL
 						let sql ="SELECT PASSWD FROM login where LOGIN='"+num+"' ";
 						sql= sql
+						console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+
+
+module.exports.mettreAJourPoints = function (ecu,callback) {
+   // connection à la base
+
+	db.getConnection(function(err, connexion){
+
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql ='UPDATE ecurie SET ECUPOINTS=(SELECT sum(pilpoints) from pilote where ecunum='+ecu+') where ecunum='+ecu+'' ;
 						console.log (sql);
             connexion.query(sql, callback);
 

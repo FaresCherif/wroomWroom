@@ -105,6 +105,8 @@ module.exports.Repertoire = 	function(request, response){
         response.listeNationalite = result[0];
         response.listeEcurie = result[1];
         response.pilote=result[2][0];
+
+        console.log(response.pilote);
         var str=response.pilote.PILDATENAIS.toString();
 
         var array = str.split(" ");
@@ -176,24 +178,35 @@ module.exports.Repertoire = 	function(request, response){
 
       if(connect=="true"){
 
-       response.title = 'Répertoire des pilotes';
-       console.log(request.body.date);
 
-         model.ajouterPilote(request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date, function (err, result) {
+          async.parallel (
+            [
+             function(callback){
+               model.ajouterPilote(request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date,function (err,result){ callback(null,result)});
+             },
+             function(callback){
+               model.mettreAJourPoints(request.body.ecurie,function (err, result){callback(null,result)});
+             },
+           ],
 
-               if (err) {
-                   // gestion de l'erreur
-                   console.log(err);
-                   return;
-               }
+           function(err,result){
 
-               response.listePilote = result;
+             if (err) {
+                 // gestion de l'erreur
+                 console.log(err);
+                 return;
+             }
 
-               //console.log(result);
 
-          console.log(response.listePilote);
-          response.render('validationAjoutPilote', response);
-          });
+             response.render('validationAjoutPilote', response);
+
+
+            }
+            );
+
+
+
+
         }
           else{
             response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
@@ -209,23 +222,41 @@ module.exports.Repertoire = 	function(request, response){
         if(connect=="true"){
 
          response.title = 'Répertoire des pilotes';
-         console.log(request.body.date);
 
-           model.modifierPilote(request.body.num,request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date, function (err, result) {
 
-                 if (err) {
-                     // gestion de l'erreur
-                     console.log(err);
-                     return;
-                 }
+         async.parallel (
+           [
+            function(callback){
+              model.modifierPilote(request.body.num,request.body.nom,request.body.prenom,request.body.description,request.body.poids,request.body.taille,request.body.points,request.body.nationalite,request.body.ecurie,request.body.date,function (err,result){ callback(null,result)});
+            },
+            function(callback){
+              model.mettreAJourPoints(request.body.ecurie,function (err, result){callback(null,result)});
+            },
+          ],
 
-                 response.listePilote = result;
+          function(err,result){
 
-                 //console.log(result);
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
 
-            console.log(response.listePilote);
+
             response.render('validationAjoutPilote', response);
-            });
+
+
+           }
+           );
+
+
+
+
+
+
+
+
+
           }
           else{
             response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";

@@ -30,12 +30,40 @@ module.exports = function(app){
    app.get('/circuits', CircuitController.ListerCircuit);
    app.get('/circuits/:num', CircuitController.DescriptionCircuit);
    app.get('/circuit/Ajouter', CircuitController.AjouterCircuit);
-   app.post('/circuit/ajouterCircuit',CircuitController.FinirAjouterCircuit);
+   //app.post('/circuit/ajouterCircuit',CircuitController.FinirAjouterCircuit);
    app.get('/circuit/supprimer/:num', CircuitController.supprimerCircuit);
    app.get('/circuit/modifier/:num', CircuitController.modifierCircuit);
    app.post('/circuit/modifier/modifierCircuit', CircuitController.FinirModifierCircuit);
 
+   app.post('/circuit/ajouterCircuit', async (request, response) => {
+       try {
+           if(!request.files) {
+               response.send({
+                   status: false,
+               });
+               console.log(request.files);
+           } else {
+               //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+               let avatar = request.files.avatar;
 
+               //Use the mv() method to place the file in upload directory (i.e. "uploads")
+               avatar.mv('./uploads/' + avatar.name);
+
+               //send response
+               response.send({
+                   status: true,
+                   message: 'File is uploaded',
+                   data: {
+                       name: avatar.name,
+                       mimetype: avatar.mimetype,
+                       size: avatar.size
+                   }
+               });
+           }
+       } catch (err) {
+           response.status(500).send(err);
+       }
+   });
 
 
 
